@@ -11,7 +11,7 @@ const { setAccessTokenCookie } = require("../helper/setCookie");
 // view all user
 const viewUsers = async (req, res, next) => {
   try {
-    const users = await User.find();
+    const users = await User.find().select("-password");
     if (!users) throw createError(403, "Users not found");
 
     successResponse(res, {
@@ -61,7 +61,6 @@ const handleLogin = async (req, res, next) => {
 
     const userWithoutPassword = user.toObject();
     delete userWithoutPassword.password;
-
 
     const isPasswordMatch = await bcrypt.compare(password, user.password);
     //if password not match
