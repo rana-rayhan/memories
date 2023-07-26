@@ -103,7 +103,7 @@ const Post = ({ data }) => {
             className=""
           >
             <span style={{ fontSize: "13px" }} className=" fw-bold text-center">
-              {data.likeCount}
+              {data.likeCount ? data.likeCount : "0"}
             </span>
             <span
               style={{ fontSize: "20px" }}
