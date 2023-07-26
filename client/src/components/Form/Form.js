@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import FileBase from "react-file-base64";
 import { useDispatch } from "react-redux";
 import { createPost } from "../Redux/Posts/postSlice";
-import { url } from "../../api";
+import { base, url } from "../../api";
 import axios from "axios";
 
 const Form = () => {
@@ -23,7 +23,7 @@ const Form = () => {
 
     if (user) {
       try {
-        const res = await axios.post(url, postData);
+        const res = await axios.post(`${base}${url}`, postData);
         dispatch(createPost(postData));
         setError(null);
         setPostData({

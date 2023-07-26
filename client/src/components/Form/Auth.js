@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useState } from "react";
-import { userUrl } from "../../api";
+import { base, userUrl } from "../../api";
 import { useNavigate } from "react-router-dom";
 
 const Auth = () => {
@@ -17,7 +17,7 @@ const Auth = () => {
     e.preventDefault();
 
     try {
-      await axios.post(`${userUrl}/register`, userdata);
+      await axios.post(`${base}${userUrl}/register`, userdata);
       navigate("/login");
       setError(null);
     } catch (error) {

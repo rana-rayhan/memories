@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { userUrl } from "../../api";
+import { base, userUrl } from "../../api";
 import { useNavigate } from "react-router-dom";
 
 const Login = () => {
@@ -23,7 +23,7 @@ const Login = () => {
     e.preventDefault();
 
     try {
-      const res = await axios.post(`${userUrl}/login`, userdata);
+      const res = await axios.post(`${base}${userUrl}/login`, userdata);
       const user = res.data.payload;
       localStorage.setItem("user", JSON.stringify(user));
 

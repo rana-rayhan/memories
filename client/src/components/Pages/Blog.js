@@ -25,8 +25,8 @@ const Blog = () => {
           >
             Creator: {creator}
           </p>
-          <span style={{ fontSize: "10px" }} className="text-muted fw-bold">
-            Tags: {tag}
+          <span style={{ fontSize: "10px" }} className=" text-uppercase text-muted fw-bold">
+            Tags: {tag && tag.map((el) => " #" + el)}
           </span>
         </div>
 

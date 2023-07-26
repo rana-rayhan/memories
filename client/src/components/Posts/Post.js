@@ -12,7 +12,7 @@ import { FaEdit } from "react-icons/fa";
 import defaultimg from "../images/defaultimg.jpeg";
 import { useDispatch } from "react-redux";
 import { deletePost, likePost } from "../Redux/Posts/postSlice";
-import { url } from "../../api";
+import { base, url } from "../../api";
 import axios from "axios";
 
 const Post = ({ data }) => {
@@ -39,7 +39,7 @@ const Post = ({ data }) => {
   const handleDelete = async (id) => {
     try {
       dispatch(deletePost(id));
-      await axios.delete(`${url}/${id}`);
+      await axios.delete(`${base}${url}/${id}`);
     } catch (error) {
       console.log(error);
     }
@@ -49,7 +49,7 @@ const Post = ({ data }) => {
     try {
       setLike(like + 1);
       setLikemsg("Liked Successfully");
-      await axios.put(`${url}/like/${id}`);
+      await axios.put(`${base}${url}/like/${id}`);
       dispatch(likePost(id));
       showNotification();
     } catch (error) {
@@ -70,7 +70,7 @@ const Post = ({ data }) => {
         <div className="d-flex justify-content-between">
           <p
             style={{ fontSize: "10px", padding: "0px" }}
-            className="ms-1 text-muted"
+            className="ms-1 text-muted text-uppercase"
           >
             {data.tag && data.tag.map((el) => " #" + el)}
           </p>

@@ -1,6 +1,7 @@
 import axios from "axios";
 
 // database url for GET or create POST
+export const base = "https://memories-app-test.onrender.com";
 export const url = "/api/posts";
 export const userUrl = "/api/users";
 
@@ -14,6 +15,7 @@ export const userUrl = "/api/users";
 //     console.log(error.response.data.message);
 //   }
 // };
+
 // create a post and store in database
 export const updatePostData = async (id, data) => {
   try {

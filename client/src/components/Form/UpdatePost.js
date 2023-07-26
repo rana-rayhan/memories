@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import FileBase from "react-file-base64";
-import { url } from "../../api";
+import { base, url } from "../../api";
 import axios from "axios";
 
 const UpdatePost = () => {
@@ -20,7 +20,9 @@ const UpdatePost = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await axios.put(`${url}/${_id}`, updateData).then(() => navigate("/"));
+    await axios
+      .put(`${base}${url}/${_id}`, updateData)
+      .then(() => navigate("/"));
 
     setPostData({
       creator: "",
